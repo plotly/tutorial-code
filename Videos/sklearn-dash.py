@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 
-wine = pd.read_csv('winequality-red.csv')
+wine = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/winequality-red.csv')
 quality_label = LabelEncoder()
 wine['quality'] = quality_label.fit_transform(wine['quality'])
 X = wine.drop('quality', axis = 1)
