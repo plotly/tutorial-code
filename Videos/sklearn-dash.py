@@ -9,9 +9,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 
-# https://colab.research.google.com/drive/1TcYdJZu-fApwHzKGoGX1iIpgRS6u-zys#scrollTo=ynMSzjHycnAs
-# https://www.youtube.com/watch?v=0Lt9w-BxKFQ
-
 wine = pd.read_csv('winequality-red.csv')
 quality_label = LabelEncoder()
 wine['quality'] = quality_label.fit_transform(wine['quality'])
@@ -34,7 +31,7 @@ app.layout = dbc.Container(
             ], width=3),
             dbc.Col([
                 html.Div("Accuracy Score:"),
-                html.Div(id='placeholder', style={'color':'blue'})
+                html.Div(id='placeholder', style={'color':'blue'}, children="")
             ], width=3)
         ], className='mb-3'),
 
