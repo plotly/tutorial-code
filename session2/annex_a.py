@@ -18,9 +18,9 @@ app = Dash(__name__)
 
 # App layout
 app.layout = html.Div([
-    html.Div(children='My First App with Data, Graph, and Controls', style={'color': 'yellow'}),
+    html.Div(children='My First App with Data, Graph, and Controls'),
     html.Hr(),
-    dcc.RadioItems(options=['pop', 'lifeExp', 'gdpPercap'], value='lifeExp', id='column-options', style={'color': 'yellow'}),
+    dcc.RadioItems(options=['pop', 'lifeExp', 'gdpPercap'], value='lifeExp', id='column-options'),
     dag.AgGrid(
         id="grid",
         rowData=df.to_dict("records"),
