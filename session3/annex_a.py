@@ -46,11 +46,12 @@ def update_graph(yaxis_chosen):
 
 @callback(
     Output(component_id='tabular-data', component_property='rowData'),
+    Output(component_id='tabular-data', component_property='columnDefs'),
     Input(component_id='my-scatter', component_property='hoverData')
 )
 def update_table(hover_data):
     print(hover_data)
-    return no_update
+    return no_update, no_update
 
 # Run the app
 if __name__ == '__main__':
