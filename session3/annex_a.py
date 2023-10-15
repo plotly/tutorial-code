@@ -31,14 +31,28 @@ app.layout = html.Div([
     html.Hr(),
     dcc.RadioItems(options=['pop', 'lifeExp', 'gdpPercap'], value='lifeExp', id='radio-buton'),
     grid,
-    dcc.Graph(figure={}, id='my-histogram')
+    dcc.Graph(figure={}, id='my-scatter')
 ])
 
 # Add controls to build the interaction
 @callback(
-    Output(component_id='my-histogram', component_property='figure'),
+    Output(component_id='my-scatter', component_property='figure'),
     Input(component_id='radio-buton', component_property='value')
 )
 def update_graph(yaxis_chosen):
-    fig = px.histogram(df, x='continent', y=yaxis_chosen, histfunc='avg')
+    fig = px.scatter(df, x='gdpPercap', y=yaxis_chosen)
     return fig
+
+
+@callback(
+    Output(component_id='tabular-data', component_property='rowData'),
+    Input(component_id='my-scatter', component_property='hoverData')
+)
+def update_table(hover_data):
+    print(hover_data)
+    return no_update
+
+# Run the app
+if __name__ == '__main__':
+    app.run(debug=True)
+
